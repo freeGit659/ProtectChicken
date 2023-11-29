@@ -12,6 +12,7 @@ cc.Class({
         isRunGame: false,
 
         chicken: cc.Node,
+        camera: cc.Node,
 
     },
 
@@ -33,6 +34,7 @@ cc.Class({
         if(Math.abs(this.xChicken - this.xCar) <= 150 && Math.abs(this.yChicken - this.yCar) <= 20) {{
             this.chicken.getComponent("ChickenController").isDeath=true;
             this.isRunGame = false;
+            this.camera.getComponent("CameraController").isZoom = true;
         }}
     }
 });

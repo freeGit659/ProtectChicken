@@ -11,12 +11,12 @@ cc.Class({
 
         gameManager : cc.Node,
         anim: cc.Animation,
+        audio: cc.AudioSource,
     },
 
     // LIFE-CYCLE CALLBACKS:
 
     // onLoad () {},
-
     start () {
         this.node.x = this.xStart;
     },
@@ -32,6 +32,7 @@ cc.Class({
 
     runAnimation(){
         if(!this.isRunAnimation){
+            this.audio.play();
             this.anim.play('CarRun');
             this.isRunAnimation = true;
         }

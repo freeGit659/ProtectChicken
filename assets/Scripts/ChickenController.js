@@ -7,13 +7,14 @@ cc.Class({
 
         
         isWalk:false,
-        isWalking: false,
+        isAnimationOn: false,
         isDeath: false,
 
         speed : 50,
 
         anim:cc.Animation,
-        audio: cc.AudioSource,
+        audio1: cc.AudioSource,
+        audio2: cc.AudioSource,
         gameManager : cc.Node,
     },
 
@@ -35,22 +36,23 @@ cc.Class({
             this.node.y -= this.speed*dt;
             this.gameManager.getComponent("GameManager").xChicken = this.node.x;
             this.gameManager.getComponent("GameManager").yChicken = this.node.y;
-            if(!this.isWalking) {
+            if(!this.isAnimationOn) {
                 this.anim.play('ChickenRun');
-                this.isWalking = true;
+                this.isAnimationOn = true;
             }
         }
         else {
-            if(this.isWalking) {
+            if(this.isAnimationOn) {
                 this.anim.stop('ChickenRun');
-                this.isWalking = false;
+                this.isAnimationOn= false;
             }
         }
     },
     death(){
         this.anim.stop('ChickenRun');
         this.anim.play('ChickenDeath');
-        this.audio.play();
+        this.audio2.play();
+        this.audio1.play();
         this.isDeath = false;
     },
 });

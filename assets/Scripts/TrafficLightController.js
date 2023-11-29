@@ -57,11 +57,11 @@ cc.Class({
                 this.turnOffLight(this.greenSprite);
                 this.turnOnLight(this.yellowSprite,this._yellow);
                 this.turnOffLight(this.redSprite);
-                this._countLabel = 3;
+                this._countLabel = 2;
             }
         }
 
-        if(this._time > 6 && this._color == 3){
+        if(this._time > 4 && this._color == 3){
             if(this.flashLight(this.yellowSprite, this._yellow, 0.5,3,dt)) {
                 this.turnOffLight(this.yellowSprite);
                 this.turnOnLight(this.greenSprite,this._green);
