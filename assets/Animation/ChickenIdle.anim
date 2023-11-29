@@ -1,0 +1,49 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "ChickenIdle",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 0.08333333333333333,
+  "sample": 60,
+  "speed": 0.3,
+  "wrapMode": 2,
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "2fa02a85-ee1f-4185-b516-009b4353ca7b"
+            }
+          },
+          {
+            "frame": 0.016666666666666666,
+            "value": {
+              "__uuid__": "f66895df-ff59-4df9-a79a-6a1a20db124e"
+            }
+          },
+          {
+            "frame": 0.03333333333333333,
+            "value": {
+              "__uuid__": "d3fd7fdc-b7fb-46f8-ad78-233605ef8601"
+            }
+          },
+          {
+            "frame": 0.05,
+            "value": {
+              "__uuid__": "a04d7848-043a-4117-8c4f-b1b40b9d976b"
+            }
+          },
+          {
+            "frame": 0.06666666666666667,
+            "value": {
+              "__uuid__": "b0fa8e2e-8d4f-48e2-a19a-d4c637596556"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": []
+}

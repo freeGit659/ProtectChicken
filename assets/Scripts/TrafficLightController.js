@@ -67,6 +67,7 @@ cc.Class({
                 this.turnOnLight(this.greenSprite,this._green);
                 this._color = 4;
                 this.chicken.getComponent("ChickenController").isWalk=true;
+                // this.chicken.getComponent("ChickenController").isIdle = true;
                 this.car.getComponent("CarController").isRun = true;
                 this.gameManager.getComponent("GameManager").isRunGame = true;
                 this._countLabel = 3;

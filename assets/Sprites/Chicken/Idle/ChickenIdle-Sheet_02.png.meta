@@ -1,0 +1,34 @@
+{
+  "ver": "2.3.3",
+  "uuid": "331c41d8-fd67-4be8-a750-4b4bafb62dda",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "point",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "platformSettings": {},
+  "subMetas": {
+    "ChickenIdle-Sheet_02": {
+      "ver": "1.0.4",
+      "uuid": "2fa02a85-ee1f-4185-b516-009b4353ca7b",
+      "rawTextureUuid": "331c41d8-fd67-4be8-a750-4b4bafb62dda",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 18,
+      "height": 18,
+      "rawWidth": 18,
+      "rawHeight": 18,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

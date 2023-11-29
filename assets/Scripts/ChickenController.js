@@ -9,6 +9,7 @@ cc.Class({
         isWalk:false,
         isAnimationOn: false,
         isDeath: false,
+        isIdle: false,
 
         speed : 50,
 
@@ -23,6 +24,7 @@ cc.Class({
     // onLoad () {},
 
     start () {
+        this.setIdle();
         this.node.y = this.yStart;
         this.anim = this.getComponent(cc.Animation);
         this.audio = this.getComponent(cc.AudioSource);
@@ -37,8 +39,10 @@ cc.Class({
             this.gameManager.getComponent("GameManager").xChicken = this.node.x;
             this.gameManager.getComponent("GameManager").yChicken = this.node.y;
             if(!this.isAnimationOn) {
+                this.anim.stop('ChickenIdle');
                 this.anim.play('ChickenRun');
                 this.isAnimationOn = true;
+                this.isIdle = true;
             }
         }
         else {
@@ -55,4 +59,8 @@ cc.Class({
         this.audio1.play();
         this.isDeath = false;
     },
+
+    setIdle(){
+        this.anim.play('ChickenIdle');
+    }
 });

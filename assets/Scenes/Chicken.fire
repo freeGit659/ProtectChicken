@@ -171,7 +171,7 @@
       "__type__": "cc.Vec3",
       "x": 0,
       "y": 0,
-      "z": 465.05564183224357
+      "z": 547.3280551917652
     },
     "_scale": {
       "__type__": "cc.Vec3",
@@ -406,6 +406,9 @@
       },
       {
         "__uuid__": "6e506e0a-d5b9-410a-8d3a-f2930e474b81"
+      },
+      {
+        "__uuid__": "60c8d461-475d-45f1-9240-1a0cd050a659"
       }
     ],
     "playOnLoad": false,
@@ -456,6 +459,7 @@
     "isWalk": false,
     "isAnimationOn": false,
     "isDeath": false,
+    "isIdle": false,
     "speed": 60,
     "anim": {
       "__id__": 9
