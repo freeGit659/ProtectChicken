@@ -5,11 +5,12 @@ cc.Class({
         xStart : 200,
         xTarget : -700,
 
-        
+        isRunAnimation : false,
         isRun:false,
         speed : 300,
 
         gameManager : cc.Node,
+        anim: cc.Animation,
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -25,6 +26,14 @@ cc.Class({
             this.node.x -= this.speed*dt;
             this.gameManager.getComponent("GameManager").xCar = this.node.x;
             this.gameManager.getComponent("GameManager").yCar = this.node.y;
+            this.runAnimation();
         }
     },
+
+    runAnimation(){
+        if(!this.isRunAnimation){
+            this.anim.play('CarRun');
+            this.isRunAnimation = true;
+        }
+    }
 });

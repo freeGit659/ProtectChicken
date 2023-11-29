@@ -671,10 +671,14 @@
     "_enabled": true,
     "xStart": 500,
     "xTarget": -700,
+    "isRunAnimation": false,
     "isRun": false,
     "speed": 300,
     "gameManager": {
       "__id__": 5
+    },
+    "anim": {
+      "__id__": 16
     },
     "_id": "3eFqpXQmNA+Ln1bmV6Snsz"
   },
@@ -1024,7 +1028,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "trafficLightBoxx",
+    "_name": "trafficLightBox",
     "_objFlags": 0,
     "_parent": {
       "__id__": 18
@@ -1114,7 +1118,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "CountDown",
+    "_name": "CountDownLabel",
     "_objFlags": 0,
     "_parent": {
       "__id__": 18

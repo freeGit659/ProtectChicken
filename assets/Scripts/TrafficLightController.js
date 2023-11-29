@@ -37,7 +37,6 @@ cc.Class({
         this.turnOffLight(this.greenSprite)
         this.turnOffLight(this.yellowSprite)
 
-        this.anim = this.getComponent(cc.Label);
     },
 
     update (dt) {
@@ -71,7 +70,6 @@ cc.Class({
                 this.car.getComponent("CarController").isRun = true;
                 this.gameManager.getComponent("GameManager").isRunGame = true;
                 this._countLabel = 3;
-            //    this.chicken.getComponent("ChickenController").isWalk=true;
             }
         }
         // if(this._time > 12) {
@@ -108,64 +106,4 @@ cc.Class({
             else return false;
         }
     },
-    // update (dt) {
-    //     if(this._time > 0 && this._color == 1){
-    //         this.turnOnLight(this.redSprite,this._red)
-    //         this.turnOffLight(this.greenSprite)
-    //         this.turnOffLight(this.yellowSprite)
-    //         this._color = 2;
-    //         // if(this.flashLight(this.redSprite, this._red, 0.5,3,dt)) {
-    //         // }
-    //     }
-    //     if(this._time > 2.5 && this._color == 2){
-    //         if(this.flashLight(this.yellowSprite, this._yellow, 0.5,3,dt)) {
-    //             this._color = 3;
-    //             this.turnOffLight(this.redSprite)
-    //             this.turnOffLight(this.greenSprite)
-    //         }
-    //     }
-
-    //     if(this._time > 5 && this._color == 3){
-    //         this.turnOffLight(this.yellowSprite)
-    //         this.turnOffLight(this.redSprite)
-    //         if(this.flashLight(this.greenSprite, this._green, 0.5,3,dt)) {
-    //            this.chicken.getComponent("ChickenController").isWalk=true;
-    //            this.car.getComponent("CarController").isRun = true;
-    //            this.gameManager.getComponent("GameManager").isRunGame = true;
-    //             this._color = 4;
-    //         }
-    //     }
-    //     // if(this._time > 15) {
-    //     //     this._time = 0;
-    //     //     this._color = 1;
-    //     // }
-    //     this._time = this._time + dt;
-    // },
-
-    // turnOnLight(sprite, color){
-    //     sprite.node.opacity = 255;
-    //     sprite.node.color = color;
-    // },
-
-    // turnOffLight(sprite){
-    //     sprite.node.color = this._black;
-    // },
-
-    // flashLight(sprite, color,timeFlash, times, dt){
-    //     if(this._timeFlash ===0 ){
-    //         sprite.node.color = this._black;
-    //     }
-    //     this._timeFlash += dt;
-    //     if(this._timeFlash >= timeFlash){
-    //         sprite.node.color = color;
-    //         this._timeFlash = 0;
-    //         this._count++;
-    //         if(this._count === times) {
-    //             this.turnOnLight(sprite, color);
-    //             this._count = 0;
-    //             return true;
-    //         }
-    //         else return false;
-    //     }
-    // },
 });
