@@ -8,10 +8,13 @@ cc.Class({
         
         isWalk:false,
         isWalking: false,
+        isDeath: false,
 
-        speed : 40,
+        speed : 50,
 
         anim:cc.Animation,
+        audio: cc.AudioSource,
+        gameManager : cc.Node,
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -21,12 +24,17 @@ cc.Class({
     start () {
         this.node.y = this.yStart;
         this.anim = this.getComponent(cc.Animation);
-            // console.log(this.anim);
+        this.audio = this.getComponent(cc.AudioSource);
     },
 
     update (dt) {
+        if(this.isDeath) {
+            this.death();
+        }
         if(this.isWalk && this.node.y > this.yTarget){
             this.node.y -= this.speed*dt;
+            this.gameManager.getComponent("GameManager").xChicken = this.node.x;
+            this.gameManager.getComponent("GameManager").yChicken = this.node.y;
             if(!this.isWalking) {
                 this.anim.play('ChickenRun');
                 this.isWalking = true;
@@ -38,5 +46,11 @@ cc.Class({
                 this.isWalking = false;
             }
         }
+    },
+    death(){
+        this.anim.stop('ChickenRun');
+        this.anim.play('ChickenDeath');
+        this.audio.play();
+        this.isDeath = false;
     },
 });
