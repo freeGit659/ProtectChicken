@@ -1,28 +1,38 @@
-
+///<reference path="../../creator.d.ts"/>
 cc.Class({
     extends: cc.Component,
 
     properties: {
-        redSprite: cc.Sprite,
-        yellowSprite: cc.Sprite,
-        greenSprite: cc.Sprite,
 
+        isRedLight : false,
+        isYellowLight : false,
         isGreenLight : false,
-        _red : new cc.Color(255,0,0),
-        _yellow : new cc.Color(255,255,0),
-        _green : new cc.Color(0,255,0),
-        _black : new cc.Color(0,0,0),
         _time: 0,
-        _timeFlash : 0,
-        _count : 0,
-        _color: 1,
         _countLabel: 0,
 
-        chicken:cc.Node,
-        car:cc.Node,
-        gameManager : cc.Node,
+        timeRedLight: {
+            default: 5,
+            serializable: true,
+            toolTip: "Time red light on"
+        },
+        timeYellowLight: {
+            default: 2,
+            serializable: true,
+            toolTip: "Time yellow light on"
+        },
+        timeGreenLight: {
+            default: 5,
+            serializable: true,
+            toolTip: "Time green light on"
+        },
 
-        label: cc.Label,
+        ani : cc.Animation,
+
+        // chicken:cc.Node,
+        // car:cc.Node,
+        // gameManager : cc.Node,
+
+        // label: cc.Label,
 
     },
 
@@ -33,78 +43,45 @@ cc.Class({
     },
 
     start () {
-        this.turnOffLight(this.redSprite);
-        this.turnOffLight(this.greenSprite)
-        this.turnOffLight(this.yellowSprite)
 
     },
 
     update (dt) {
-        if(this._countLabel >= 0 ){
-            this.label.string = Math.round(this._countLabel).toString();
-            this._countLabel -= dt;
+        if(!this.isGreenLight && this._time < this.timeGreenLight) {
+            this.turnOnGreenLight();
+            this.isGreenLight = true;
+        } else if (!this.isYellowLight && this._time >= this.timeGreenLight) {
+            this.turnOnYellowLight();
+            this.isYellowLight = true;
+        }else if (!this.isRedLight && this._time >= this.timeGreenLight + this.timeYellowLight) {
+            this.turnOnRedLight();
+            this.isRedLight = true;
         }
-        if(this._time >= 0 && this._color == 1){
-            this.turnOnLight(this.redSprite,this._red);
-            this.turnOffLight(this.greenSprite);
-            this.turnOffLight(this.yellowSprite);
-            this._color = 2;
-            this._countLabel = 4;
+        else if (this._time >= this.timeGreenLight + this.timeRedLight + this.timeYellowLight) {
+            this._time = 0;
+            this.isRedLight = false;
+            this.isYellowLight = false;
+            this.isGreenLight = false;
         }
-        if(this._time > 3 && this._color == 2){
-            if(this.flashLight(this.redSprite, this._red, 0.5,3,dt)) {
-                this._color = 3;
-                this.turnOffLight(this.greenSprite);
-                this.turnOnLight(this.yellowSprite,this._yellow);
-                this.turnOffLight(this.redSprite);
-                this._countLabel = 2;
-            }
-        }
-
-        if(this._time > 4 && this._color == 3){
-            if(this.flashLight(this.yellowSprite, this._yellow, 0.5,3,dt)) {
-                this.turnOffLight(this.yellowSprite);
-                this.turnOnLight(this.greenSprite,this._green);
-                this._color = 4;
-                this.chicken.getComponent("ChickenController").isWalk=true;
-                // this.chicken.getComponent("ChickenController").isIdle = true;
-                this.car.getComponent("CarController").isRun = true;
-                this.gameManager.getComponent("GameManager").isRunGame = true;
-                this._countLabel = 3;
-            }
-        }
-        // if(this._time > 12) {
-        //     if(this.flashLight(this.redSprite, this._red, 0.5,3,dt)){
-        //         this._time = 0;
-        //         this._color = 1;
-        //     }
-        // }
-        this._time = this._time + dt;
+        this._time += dt;
     },
 
-    turnOnLight(sprite, color){
-        sprite.node.opacity = 255;
-        sprite.node.color = color;
+    turnOnRedLight(){
+        this.ani.play('onRedLight');
+        this.ani.stop('onGreenLight');
+        this.ani.stop('onYellowLight')
+        cc.log("red");
     },
+    turnOnYellowLight(){
+        this.ani.play('onYellowLight');
+        this.ani.stop('onRedLight');
+        cc.log("yellow");
+    },
+    turnOnGreenLight(){
+        this.ani.play('onGreenLight');
+        this.ani.stop('onRedLight');
+        this.ani.stop('onYellowLight')
+        cc.log("green");
+    }
 
-    turnOffLight(sprite){
-        sprite.node.color = this._black;
-    },
-
-    flashLight(sprite, color,timeFlash, times, dt){
-        if(this._timeFlash ===0 ){
-            sprite.node.color = this._black;
-        }
-        this._timeFlash += dt;
-        if(this._timeFlash >= timeFlash){
-            sprite.node.color = color;
-            this._timeFlash = 0;
-            this._count++;
-            if(this._count === times) {
-                this._count = 0;
-                return true;
-            }
-            else return false;
-        }
-    },
 });

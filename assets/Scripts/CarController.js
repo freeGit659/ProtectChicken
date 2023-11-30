@@ -2,32 +2,36 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        xStart : 200,
-        xTarget : -700,
+        // xStart : 200,
+        // xTarget : -700,
+
+        // yStart : 200,
+        // yxTarget : -700,
 
         isRunAnimation : false,
         isRun:false,
-        speed : 300,
+        speed : 0,
+        speedZoom: 0.05,
 
-        gameManager : cc.Node,
-        anim: cc.Animation,
-        audio: cc.AudioSource,
+        // gameManager : cc.Node,
+        // anim: cc.Animation,
+        // audio: cc.AudioSource,
     },
 
     // LIFE-CYCLE CALLBACKS:
 
     // onLoad () {},
     start () {
-        this.node.x = this.xStart;
+
     },
 
     update (dt) {
-        if(this.isRun && this.node.x > this.xTarget){
+            this.speed += dt*100;
             this.node.x -= this.speed*dt;
-            this.gameManager.getComponent("GameManager").xCar = this.node.x;
-            this.gameManager.getComponent("GameManager").yCar = this.node.y;
-            this.runAnimation();
-        }
+            this.node.y -= this.speed*dt;
+            this.node.scaleX += this.speedZoom*dt; 
+            this.node.scaleY += this.speedZoom*dt;
+            console.log(this.speed); 
     },
 
     runAnimation(){

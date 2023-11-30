@@ -1,0 +1,61 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "blinkYellowLight",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 0.5166666666666667,
+  "sample": 60,
+  "speed": 0.5,
+  "wrapMode": 1,
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "29629eea-f88b-403f-bba6-5bb9c60d0aae"
+            }
+          },
+          {
+            "frame": 0.08333333333333333,
+            "value": {
+              "__uuid__": "27ad90a3-5f4c-4d00-a3d6-4f6991aa14ac"
+            }
+          },
+          {
+            "frame": 0.16666666666666666,
+            "value": {
+              "__uuid__": "29629eea-f88b-403f-bba6-5bb9c60d0aae"
+            }
+          },
+          {
+            "frame": 0.25,
+            "value": {
+              "__uuid__": "27ad90a3-5f4c-4d00-a3d6-4f6991aa14ac"
+            }
+          },
+          {
+            "frame": 0.3333333333333333,
+            "value": {
+              "__uuid__": "29629eea-f88b-403f-bba6-5bb9c60d0aae"
+            }
+          },
+          {
+            "frame": 0.4166666666666667,
+            "value": {
+              "__uuid__": "27ad90a3-5f4c-4d00-a3d6-4f6991aa14ac"
+            }
+          },
+          {
+            "frame": 0.5,
+            "value": {
+              "__uuid__": "f3dd868e-65b4-439b-9058-258cb994ac35"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": []
+}
