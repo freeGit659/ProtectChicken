@@ -26,14 +26,16 @@ cc.Class({
     },
 
     update (dt) {
-            this.speed += dt*100;
-            this.node.x -= this.speed*dt;
-            this.node.y -= this.speed*dt;
-            this.node.scaleX += this.speedZoom*dt; 
-            this.node.scaleY += this.speedZoom*dt;
-            console.log(this.speed); 
+
     },
 
+    carMoving(dt){
+        this.speed += dt*10;
+        this.node.x -= this.speed*dt;
+        this.node.y -= this.speed*dt;
+        this.node.scaleX += this.speedZoom*dt; 
+        this.node.scaleY += this.speedZoom*dt;
+    },
     runAnimation(){
         if(!this.isRunAnimation){
             this.audio.play();
