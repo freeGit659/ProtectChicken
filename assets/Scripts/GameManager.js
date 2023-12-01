@@ -39,20 +39,20 @@ cc.Class({
     update (dt) {
         this._car.forEach(element => {
             if(!element.node.active) return;
-            if(element.y >= -40){
-                element.runCar(dt);
+            if(element.y = -40 && this._light.isRedLight){
                 return;
             }
-            //element.runCar(dt);
-            //cc.log("GameMNG");
-            if(this._light.isGreenLight){
+            if(element.y > -40){
                 element.runCar(dt);
-            } else if(this._light.isYellowLight){
+            }else if(element.y < -40){
                 element.runCar(dt);
             }
+        //     //element.runCar(dt);
+        //     //cc.log("GameMNG");
         });
         // if(!this.isRunGame) return;
         // this.runGame();
+        console.log('xanh: '+ this._light.isGreenLight, 'do: ' + this._light.isRedLight, 'vang' +this._light.isYellowLight);
     },
 
     // runGame(){

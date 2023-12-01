@@ -864,9 +864,9 @@
     "isGreenLight": false,
     "_time": 0,
     "_countLabel": 0,
-    "timeRedLight": 4,
-    "timeYellowLight": 2,
-    "timeGreenLight": 5,
+    "timeRedLight": 10,
+    "timeYellowLight": 3,
+    "timeGreenLight": 10,
     "ani": {
       "__id__": 20
     },

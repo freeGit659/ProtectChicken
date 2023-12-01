@@ -63,6 +63,7 @@ cc.Class({
 
     update (dt) {
         this.disableCar();
+        //cc.log(this.node.x, this.node.y);
     },
 
     runCar(dt){
