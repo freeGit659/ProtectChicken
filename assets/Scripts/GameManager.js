@@ -37,30 +37,7 @@ cc.Class({
     },
 
     update (dt) {
-        this._car.forEach(element => {
-            if(!element.node.active) return;
-            if(element.y = -40 && this._light.isRedLight){
-                return;
-            }
-            if(element.y > -40){
-                element.runCar(dt);
-            }else if(element.y < -40){
-                element.runCar(dt);
-            }
-        //     //element.runCar(dt);
-        //     //cc.log("GameMNG");
-        });
-        // if(!this.isRunGame) return;
-        // this.runGame();
-        console.log('xanh: '+ this._light.isGreenLight, 'do: ' + this._light.isRedLight, 'vang' +this._light.isYellowLight);
+
     },
 
-    // runGame(){
-    //     if (this.xCar == 0 || this.xChicken == 0) return;
-    //     if(Math.abs(this.xChicken - this.xCar) <= 150 && Math.abs(this.yChicken - this.yCar) <= 20) {{
-    //         this.chicken.getComponent("ChickenController").isDeath=true;
-    //         this.isRunGame = false;
-    //         this.camera.getComponent("CameraController").isZoom = true;
-    //     }}
-    // }
 });

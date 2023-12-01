@@ -1,5 +1,3 @@
-const { Camera } = require("three");
-
 cc.Class({
     extends: cc.Component,
 

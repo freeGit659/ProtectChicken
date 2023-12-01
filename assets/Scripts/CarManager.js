@@ -8,6 +8,8 @@ cc.Class({
 
         carController: [],
 
+        
+
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -24,7 +26,6 @@ cc.Class({
         this.carController.forEach(element => {
             if(!element.node.active && element.timeSpawn <= 0){
                 element.timeSpawn = Math.floor(Math.random() * 10) +1;
-                cc.log(element.timeSpawn);
             }
             if(!element.node.active){
                 element.timeSpawn -= dt;
@@ -38,9 +39,8 @@ cc.Class({
     },
 
     carMoving(dt, speed, speedZoom, x, y, scaleX, scaleY, isLeft){
-        //cc.log("CarMng");
         if(y >= -40) {
-            speed += dt/100;
+            speed += dt/10000;
             speedZoom += speedZoom*dt;
             scaleX += 0.1*speedZoom*dt; 
             scaleY += 0.1*speedZoom*dt;
@@ -54,33 +54,16 @@ cc.Class({
         }
         else {
             speed += dt*1;
-            scaleX += 0.6*speedZoom*dt; 
-            scaleY += 0.6*speedZoom*dt;
+            scaleX += 2*speedZoom*dt; 
+            scaleY += 2*speedZoom*dt;
             if(isLeft) {
-                x -= 8*speed*dt;
-                y -= 5*speed*dt;
+                x -= 15*speed*dt;
+                y -= 20*speed*dt;
             } else {
-                x += 5*speed*dt;
-                y -= 5*speed*dt;
+                x += 15*speed*dt;
+                y -= 20*speed*dt;
             }
         }
         return this.arr = [speed, speedZoom, x, y, scaleX, scaleY];
     },
-    // spawnCar(element){
-    //     element.node.active = true;
-    //     element.speed = this.speedDefault;
-    //     element.speedZoom = this.speedZoomDefault;
-    //     elemnode.x = this.xDefault;
-    //     node.y = this.yDefault;
-    //     this.node.scaleX = this.scaleXDefault;
-    //     this.node.scaleY = this.scaleYDefault;
-    //     cc.log('spawn')
-    // },
-
-    // disableCar(){
-    //     if(!this.node.active) return;
-    //     if(this.node.y < -500){
-    //         this.node.active = false;
-    //     }
-    // },
 });

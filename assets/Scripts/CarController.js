@@ -44,6 +44,10 @@ cc.Class({
 
         },
 
+        light: cc.Node,
+        chicken: cc.Node,
+        
+
         // gameManager : cc.Node,
         // anim: cc.Animation,
         // audio: cc.AudioSource,
@@ -58,11 +62,13 @@ cc.Class({
         this.scaleYDefault = this.node.scaleY;
     },
     start () {
-
+        this._light = this.light.getComponent("TrafficLightController");
+        this._chicken = this.chicken.getComponent("ChickenController");
     },
 
     update (dt) {
         this.disableCar();
+        this.stop(dt);
         //cc.log(this.node.x, this.node.y);
     },
 
@@ -74,8 +80,6 @@ cc.Class({
         this.node.y = this.arr[3];
         this.node.scaleX = this.arr[4];
         this.node.scaleY = this.arr[5];
-
-        //cc.log(this.arr);
     },
 
     spawnCar(){
@@ -85,7 +89,15 @@ cc.Class({
         this.node.y = this.yDefault;
         this.node.scaleX = this.scaleXDefault;
         this.node.scaleY = this.scaleYDefault;
-        cc.log('spawn')
+    },
+
+    stop(dt){
+            if(((this.node.y >= -65 && this.node.y <= -64) ||(this.node.y >= 91 && this.node.y <= 92)) && this._light.isRedLight){
+                cc.log('dung');
+            }else{
+                this.runCar(dt);
+            }
+            
     },
 
     disableCar(){
@@ -94,21 +106,11 @@ cc.Class({
         }
     },
 
-    
-    // carMoving(dt){
-    //     if(this.node.x >= 2 && this.node.y >= -40) {
-    //         this.speed += dt*1;
-    //         this.speedZoom += this.speedZoom*dt;
-    //     }
-    //     else {
-    //         this.speed += dt*10;
-    //     }
-    //     this.node.x -= this.speed*dt;
-    //     this.node.y -= this.speed*dt;
-    //     this.node.scaleX += this.speedZoom*dt; 
-    //     this.node.scaleY += this.speedZoom*dt;
-    //     console.log(Math.round(this.node.x), Math.round(this.node.y), this.speed, this.speedZoom)
-    // },
+    hurtChicken(){
+        if(Math.abs(this._chicken.node.x - this.node.x) <= 50 && Math.abs(this._chicken.node.y - this.node.y) <= 10) {{
+            this._chicken.isDeath=true;
+        }}
+    },
     runAnimation(){
         if(!this.isRunAnimation){
             this.audio.play();
