@@ -14,7 +14,14 @@ cc.Class({
         chicken: cc.Node,
         camera: cc.Node,
         light: cc.Node,
-        car: cc.Node,
+        car : {
+            default: [],
+            type: [cc.Node],
+        },
+        _car : {
+            default: [],
+            type: [cc.Component],
+        },
 
     },
 
@@ -24,14 +31,26 @@ cc.Class({
 
     start () {
         this._light = this.light.getComponent("TrafficLightController");
-        this._car = this.car.getComponent('CarController');
+        this.car.forEach(element => {
+            this._car.push(element.getComponent('CarController'));
+        });
     },
 
     update (dt) {
-        if(this._light.isGreenLight){
-            this._car.carMoving(dt);
-        }
-
+        this._car.forEach(element => {
+            if(!element.node.active) return;
+            if(element.y >= -40){
+                element.runCar(dt);
+                return;
+            }
+            //element.runCar(dt);
+            //cc.log("GameMNG");
+            if(this._light.isGreenLight){
+                element.runCar(dt);
+            } else if(this._light.isYellowLight){
+                element.runCar(dt);
+            }
+        });
         // if(!this.isRunGame) return;
         // this.runGame();
     },

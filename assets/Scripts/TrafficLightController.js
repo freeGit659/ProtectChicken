@@ -51,11 +51,11 @@ cc.Class({
             this.turnOnGreenLight();
             this.isGreenLight = true;
             this.isRedLight = false;
-        } else if (!this.isYellowLight && this._time >= this.timeGreenLight) {
+        } else if (!this.isYellowLight && this._time >= this.timeGreenLight && this._time < this.timeGreenLight + this.timeYellowLight) {
             this.turnOnYellowLight();
             this.isYellowLight = true;
             this.isGreenLight = false;
-        }else if (!this.isRedLight && this._time >= this.timeGreenLight + this.timeYellowLight) {
+        }else if (!this.isRedLight && this._time >= this.timeGreenLight + this.timeYellowLight && this._time < this.timeGreenLight + this.timeRedLight + this.timeYellowLight) {
             this.turnOnRedLight();
             this.isRedLight = true;
             this.isYellowLight = false;
